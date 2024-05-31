@@ -143,18 +143,20 @@ async function leak(phone) {
                         .replace('vk_password', '🔑 <b>Пароль от ВК:</b> ')
                         .replace('gibdd2_passport_issue_date', '🚗 <b>ГИБДД дата выдачи паспорта:</b> ');
 
-                    const full = headr + result;
-                    answer += full + '\n';
+                let fbex = '';
+                linePhone = linePhone.replace(', Russia', '').replace(/"/g, '');
+                try {
+                    fbex = linePhone.split('"')[1];
+                } catch {}
+
+                if (result && headr !== 'mt') {
+                    answer += `${headr}<code>${result}</code>\n`;
                 }
             }
         }
-
-        console.log(answer);
-        return answer;
-    } catch (error) {
-        console.error('Error fetching or processing data:', error);
-        throw error;
     }
+
+    return answer;
 }
 
 export default leak;
