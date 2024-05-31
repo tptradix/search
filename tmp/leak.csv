@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Test</title>
+</head>
+<body style="margin: 0;">
+	<dir>
+		<p> Привет! <br> Меня зовут <b>Тимур</b>
+			<br>
+			<dir>
+				<ul style="font-style: italic;">
+					<h2> Мои оценки: </h2>
+					<li> Математика - 5 </li>
+					<li> Физика - 5</li>
+					<li> English - 5</li>
+				</ul>
+
+				<table border = 1px>
+					<tr>
+						<td>Предметы</td>
+						<td>Оценки</td>
+					</tr>
+					<tr>
+						<td>Математика</td>
+						<td>5</td>
+					</tr>
+					<tr>
+						<td>Физика</td>
+						<td>5</td>
+					</tr>
+				</table>
+			</dir>
+	</dir>
+</body>
+</html>
