@@ -143,18 +143,18 @@ async function leak(phone) {
                         .replace('vk_password', '🔑 <b>Пароль от ВК:</b> ')
                         .replace('gibdd2_passport_issue_date', '🚗 <b>ГИБДД дата выдачи паспорта:</b> ');
 
-                let fbex = '';
-                linePhone = linePhone.replace(', Russia', '').replace(/"/g, '');
-                try {
-                    fbex = linePhone.split('"')[1];
-                } catch {}
-
-                if (result && headr !== 'mt') {
-                    answer += `${headr}<code>${result}</code>\n`;
+                    let fbex = '';
+                    linePhone = linePhone.replace(', Russia', '').replace(/"/g, '');
+                    try {
+                        fbex = linePhone.split('"')[1];
+                    } catch {}
+    
+                    if (result && headr !== 'mt') {
+                        answer += `${headr}<code>${result}</code>\n`;
+                    }
                 }
             }
         }
-    }
 
     return answer;
 }
