@@ -8,7 +8,7 @@ async function leak(phone) {
     let linePhone = '';
     let answer = '';
 
-    phone = phone.slice(1);
+
     const part1 = phone.slice(0, 2);
     const part2 = phone.slice(2, 4);
     const part3 = phone.slice(4, 6);
