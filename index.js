@@ -3,7 +3,7 @@ import { dirname } from 'path';
 import path from 'path';
 import express from 'express';
 import bodyParser from 'body-parser';
-import { leak } from './leaks.js';
+import leak from './leaks.js';
 
 const app = express();
 const PORT = 4880;
