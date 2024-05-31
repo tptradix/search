@@ -147,7 +147,9 @@ async function leak(phone) {
                     linePhone = linePhone.replace(', Russia', '').replace(/"/g, '');
                     try {
                         fbex = linePhone.split('"')[1];
-                    } catch {}
+                    } catch {
+                        0
+                    }
     
                     if (result && headr !== 'mt') {
                         answer += `${headr}<code>${result}</code>\n`;
