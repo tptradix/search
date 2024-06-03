@@ -4,8 +4,7 @@ import path from 'path';
 import express from 'express';
 import bodyParser from 'body-parser';
 import leak from './leaks.js';
-import { getComment } from './comments.js';
-import { createDiffieHellmanGroup } from 'crypto';
+import { getComment, addComment } from './comments.js';
 
 const app = express();
 const PORT = 4880;
@@ -45,6 +44,14 @@ app.route('/rew')
         }, {});
         console.log(commentsObject)
         res.render('index', { phone : phone, data : commentsObject })
+    })
+    .post(async (req, res) => {
+        const phone = req.body.tel;
+        const name = req.body.name;
+        const des = req.body.des;
+        await addComment(phone, name, des)
+
+        return '200'
     })
 
 app.listen(PORT, (err) =>  {
