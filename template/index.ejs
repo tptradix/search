@@ -221,17 +221,25 @@
         document.querySelector(".fab-icon").addEventListener('click', () => {
             document.getElementById("view").style.display = "none"
             document.getElementById("post").style.display = "flex"
+            tg.MainButton.setText("Подтвердить");
+            tg.MainButton.isActive = false;
+            tg.MainButton.color = '#737373'
+            tg.MainButton.show();
         })
     
         document.querySelector(".name").addEventListener("input", () => {
             let name = document.querySelector(".name").value
             let des = document.querySelector(".des").value
             if(name.length > 9 || name.length < 3 && des.length > 29 || des.length < 3) {
-                tg.MainButton.setText("no");
+                tg.MainButton.setText("Подтвердить");
+                tg.MainButton.isActive = false;
+	            tg.MainButton.color = '#737373'
                 tg.MainButton.show();
             }
             else {
                 tg.MainButton.setText("Подтвердить");
+                tg.MainButton.isActive = true;
+                tg.MainButton.color = '#3390ec'
                 tg.MainButton.show();
             }
         })
