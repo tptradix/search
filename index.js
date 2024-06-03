@@ -51,7 +51,7 @@ app.route('/rew')
         const des = req.body.des;
         await addComment(phone, name, des)
 
-        return '200'
+        res.send('200')
     })
 
 app.listen(PORT, (err) =>  {
