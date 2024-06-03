@@ -136,7 +136,7 @@
                     <img style="border-radius: 0px;" width="70px" height="70px" src="https://em-content.zobj.net/source/telegram/386/telephone-receiver_1f4de.webp">
                 </div>
                 <div style="padding: 10px;">
-                    <h1>Вот что думают другие пользователи о номере <b>+<%= phone.phone %></b></h1>
+                    <h1>Вот что думают другие пользователи пишут о номере <b>+<%= phone.phone %></b></h1>
                 </div>
             </div>
             <div style="display: grid; align-items: center; justify-content: center;">
@@ -201,10 +201,10 @@
                                 </div>
                                 <div style="display: flex; justify-content: space-between;">
                                     <div style="width: 48%;">
-                                        <button>👍</button>
+                                        <button type="button">👍</button>
                                     </div>
                                     <div style="width: 48%;">
-                                        <button>👎</button>
+                                        <button type="button">👎</button>
                                     </div>
                                 </div>
                             </div>
@@ -215,6 +215,10 @@
         </form>
     </div>
     <script>
+        let tg = window.Telegram.WebApp
+        tg.MainButton.setText("Submit");
+        tg.MainButton.show();
+        
         document.querySelector(".fab-icon").addEventListener('click', () => {
             document.getElementById("view").style.display = "none"
             document.getElementById("post").style.display = "flex"
