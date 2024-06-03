@@ -183,7 +183,7 @@
                                 <span>Имя</span>
                             </div>
                             <div>
-                                <input value="Anonym" placeholder="..." type="text">
+                                <input class="name" value="Anonym" placeholder="..." type="text">
                             </div>
                         </div>
                         <div style="display: grid; align-items: center; justify-content: center; margin-top: 10px;">
@@ -191,7 +191,7 @@
                                 <span>Отзыв</span>
                             </div>
                             <div>
-                                <input placeholder="..." type="text">
+                                <input class="des" placeholder="..." type="text">
                             </div>
                         </div>
                         <div style="display: grid; align-items: center; justify-content: center; margin-top: 10px;">
@@ -201,10 +201,10 @@
                                 </div>
                                 <div style="display: flex; justify-content: space-between;">
                                     <div style="width: 48%;">
-                                        <button type="button">👍</button>
+                                        <button type="button" id="good">👍</button>
                                     </div>
                                     <div style="width: 48%;">
-                                        <button type="button">👎</button>
+                                        <button type="button" id="bad">👎</button>
                                     </div>
                                 </div>
                             </div>
@@ -216,12 +216,22 @@
     </div>
     <script>
         let tg = window.Telegram.WebApp
-        tg.MainButton.setText("Submit");
-        tg.MainButton.show();
-        
+        let key = 0;
+
         document.querySelector(".fab-icon").addEventListener('click', () => {
             document.getElementById("view").style.display = "none"
             document.getElementById("post").style.display = "flex"
+            let name = document.querySelector(".name").value
+            let des = document.querySelector(".des").value
+
+            if(name.length() > 9 || name.length() < 3 && des.length() > 29 || des.length() < 3) {
+                tg.MainButton.setText("no");
+                tg.MainButton.show();
+            }
+            else {
+                tg.MainButton.setText("Подтвердить");
+                tg.MainButton.show();
+            }
         })
     </script>
 </body>
