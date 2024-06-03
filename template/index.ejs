@@ -73,11 +73,12 @@
                     <img style="border-radius: 0px;" width="70px" height="70px" src="https://em-content.zobj.net/source/telegram/386/telephone-receiver_1f4de.webp">
                 </div>
                 <div style="padding: 10px;">
-                    <h1>Вот что думают другие пользователи о номере <b>+79990009999</b></h1>
+                    <h1>Вот что думают другие пользователи о номере <b>+<%= phone.phone %></b></h1>
                 </div>
             </div>
             <div style="display: grid; align-items: center; justify-content: center;">
                 <ul>
+                    <% for (let item in data) { %>
                     <li>
                         <div style="display: flex; justify-content: space-between; border: 1px solid #797979; padding: 5px; border-radius: 10px">
                             <div style="display: flex;">
@@ -86,10 +87,10 @@
                                 </div>
                                 <div style="display: grid;">
                                     <div>
-                                        <span>Аноним</span>
+                                        <span><%= data[item].user_id %></span>
                                     </div>
                                     <div>
-                                        <p>Spam number don't take call!</p>
+                                        <p><%= data[item].comment %></p>
                                     </div>
                                 </div>
                             </div>
@@ -98,26 +99,7 @@
                             </div>
                         </div>
                     </li>
-                    <li>
-                        <div style="display: flex; justify-content: space-between; border: 1px solid #797979; padding: 5px; border-radius: 10px">
-                            <div style="display: flex">
-                                <div style="margin-right: 10px; display: flex; align-items: center;">
-                                    <img width="40px" height="40px" src="https://tptradix.github.io/OpenWorksUI/img/*.png">
-                                </div>
-                                <div style="display: grid;">
-                                    <div>
-                                        <span>Аноним</span>
-                                    </div>
-                                    <div>
-                                        <p>Spam number don't take call</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <p style="font-size: 18px;">👍</p>
-                            </div>
-                        </div>
-                    </li>
+                    <% } %>
                 </ul>
             </div>
         </form>
