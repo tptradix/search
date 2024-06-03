@@ -34,7 +34,7 @@
             padding: 10px;
             width: 95vw;
             display: inline-block;
-            background-color: var(var(--tg-theme-secondary-bg-color));
+            background-color: var(--tg-theme-secondary-bg-color);
             border-radius: 10px;
         }
 
@@ -63,11 +63,72 @@
 	        color: var(--tg-theme-text-color);
         }
 
-    </style>
+        .fab {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #6cb7ff;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .fab:hover {
+            background-color: #0056b3;
+        }
+
+        .fab-icon {
+            font-size: 30px;
+            font-weight: 700;
+            text-align: center;
+            padding-bottom: 3px;
+        }
+
+        #post {
+            display: none;
+        }
+
+        #view {
+            display: block;
+        }
+
+        input {
+            font-size: 18px;
+            border: 0;
+            border: 2px solid #797979;
+            border-radius: 10px;
+            font-family: Roboto, system-ui, sans-serif;
+            padding: 5px;
+            width: 230px;
+            color: var(--tg-theme-text-color);
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        button {
+            border: 0;
+            font-size: 23px;
+            background: var(--tg-theme-secondary-bg-color);
+            width: 100%;
+            border-radius: 5px;
+        }
+</style>
 </head>
 <body>
     <div id="root">
-        <form method="POST">
+        <form method="POST" id="view">
+            <div class="fab" id="fab-button">
+                <span class="fab-icon">+</span>
+            </div>
             <div style="display: grid; align-items: center; justify-content: center; margin-top: 10px;">
                 <div style="display: flex; align-items: center; justify-content: center;">
                     <img style="border-radius: 0px;" width="70px" height="70px" src="https://em-content.zobj.net/source/telegram/386/telephone-receiver_1f4de.webp">
@@ -103,6 +164,59 @@
                 </ul>
             </div>
         </form>
+        <form method="POST" id="post">
+            <div style="display: grid; align-items: center; justify-content: center;">
+                <div style="display: grid; align-items: center; justify-content: center; margin-top: 10px;">
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <img style="border-radius: 0px;" width="70px" height="70px" src="https://em-content.zobj.net/source/telegram/386/memo_1f4dd.webp">
+                    </div>
+                    <div style="padding: 10px;">
+                        <h1>Оставьте отзыв для пользователей о номере <b>+<%= phone.phone %></b></h1>
+                    </div>
+                </div>
+                <div style="display: grid; align-items: center; justify-content: center;">
+                    <div style="width: 75vw">
+                        <div style="display: grid; align-items: center; justify-content: center; margin-top: 10px;">
+                            <div>
+                                <span>Имя</span>
+                            </div>
+                            <div>
+                                <input value="Anonym" placeholder="..." type="text">
+                            </div>
+                        </div>
+                        <div style="display: grid; align-items: center; justify-content: center; margin-top: 10px;">
+                            <div>
+                                <span>Отзыв</span>
+                            </div>
+                            <div>
+                                <input placeholder="..." type="text">
+                            </div>
+                        </div>
+                        <div style="display: grid; align-items: center; justify-content: center; margin-top: 10px;">
+                            <div style="width: 230px;">
+                                <div>
+                                    <span>Оценка</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <div style="width: 48%;">
+                                        <button>👍</button>
+                                    </div>
+                                    <div style="width: 48%;">
+                                        <button>👎</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
+    <script>
+        document.querySelector(".fab-icon").addEventListener('click', () => {
+            document.getElementById("view").style.display = "none"
+            document.getElementById("post").style.display = "flex"
+        })
+    </script>
 </body>
 </html>
