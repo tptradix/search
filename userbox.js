@@ -1,0 +1,36 @@
+import axios from 'axios';
+import jsonpath from 'jsonpath';
+
+const key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcmVhdGVkX2F0IjoxNzE4MjY3Njg3LCJhcHBfaWQiOjE3MTgyNjc2ODd9.4qjbW9gwtVxtnLQ66gFlvK5P4ii_J5G3ArNltOD6hBw';
+
+const headers = {
+    'Host': 'api.usersbox.ru',
+    'Authorization': key
+};
+
+async function user_api(value) {
+    const url = `http://api.usersbox.ru/v1/search?q=${value}`;
+
+    try {
+        const response = await axios.get(url, { headers });
+        const data = response.data;
+
+        let mes = "";
+
+        const matches = jsonpath.query(data, '$.data.items[*].hits.items[*]');
+
+        for (const match of matches) {
+            for (const [key, value] of Object.entries(match)) {
+                const newKey = key.replace("surname", "Фамилия").replace("name", "Имя").replace("address", "Адрес").replace("bday", "Дата Рождения").replace("patronymic", "Отчество").replace("gender", "Пол");
+                mes = mes + newKey + ":" + value + "\n";
+            }
+        }
+
+        return mes;
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
+export default user_api;

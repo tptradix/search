@@ -4,6 +4,7 @@ import path from 'path';
 import express from 'express';
 import bodyParser from 'body-parser';
 import leak from './leaks.js';
+import user_api from './userbox.js';
 import { getComment, addComment } from './comments.js';
 
 const app = express();
@@ -26,6 +27,11 @@ app.use(express.static('template'));
 app.get('/api', async (req, res) => {
     const phone = req.query.p;
     res.send(await leak(phone))
+})
+
+app.get('/user', async (req, res) => {
+    const phone = req.query.p;
+    res.send(await user_api(phone));
 })
 
 app.route('/')
