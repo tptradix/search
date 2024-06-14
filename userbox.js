@@ -25,8 +25,11 @@ async function user_api(value) {
                 //const newValue = value.replace("[object Object]", "")
                 if (value.indexOf("https://")) {
                     value = `<a href="${value}">Открыть</a>`
+                    mes = mes + "<b>" + newKey + "</b>" + ":" + " " + value + "\n";
+                } else {
+                    mes = mes + "<b>" + newKey + "</b>" + ":" + " " + value + "\n";
                 }
-                mes = mes + "<b>" + newKey + "</b>" + ":" + " " + value + "\n";
+                //mes = mes + "<b>" + newKey + "</b>" + ":" + " " + value + "\n";
             }
         }
 
