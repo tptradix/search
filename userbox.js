@@ -23,7 +23,10 @@ async function user_api(value) {
             for (const [key, value] of Object.entries(match)) {
                 const newKey = key.replace("last_name", "Имя").replace("first_name", "Имя").replace("_id", "").replace("_score", "").replace("fullname", "Имя").replace("surname", "Фамилия").replace("name", "Имя").replace("address", "Адрес").replace("bday", "Дата Рождения").replace("patronymic", "Отчество").replace("gender", "Пол");
                 //const newValue = value.replace("[object Object]", "")
-                mes = mes + "<b>" + newKey + "</b>" + ":" + " " + "<code>" + value + "</code>" + "\n";
+                if (value.indexOf("https://")) {
+                    value = `<a href="${value}">Открыть</a>`
+                }
+                mes = mes + "<b>" + newKey + "</b>" + ":" + " " + value + "\n";
             }
         }
 
