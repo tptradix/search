@@ -44,7 +44,7 @@ async function user_api(query) {
                 if (typeof value === 'string' && value.startsWith("https://")) {
                     newValue = `<a href="${value}">Открыть</a>`;
                 } else if (typeof value === 'object') {
-                    newValue = "</code>" + JSON.stringify(value) + "</code>";
+                    newValue = "<code>" + JSON.stringify(value) + "</code>";
                 }
 
                 mes += `<b>${newKey}</b>: ${newValue}\n`;
