@@ -8,8 +8,8 @@ const headers = {
     'Authorization': key
 };
 
-async function user_api(value) {
-    const url = `http://api.usersbox.ru/v1/search?q=${value}`;
+async function user_api(query) {
+    const url = `http://api.usersbox.ru/v1/search?q=${query}`;
 
     try {
         const response = await axios.get(url, { headers });
@@ -21,22 +21,33 @@ async function user_api(value) {
 
         for (const match of matches) {
             for (const [key, value] of Object.entries(match)) {
-                const newKey = key.replace("last_name", "Имя").replace("first_name", "Имя").replace("_id", "").replace("_score", "").replace("fullname", "Имя").replace("surname", "Фамилия").replace("name", "Имя").replace("address", "Адрес").replace("bday", "Дата Рождения").replace("patronymic", "Отчество").replace("gender", "Пол");
-                //const newValue = value.replace("[object Object]", "")
-                if (value.indexOf("https://")) {
-                    var newValue = `<a href="${value}">Открыть</a>`
-                    mes = mes + "<b>" + newKey + "</b>" + ":" + " " + newValue + "\n";
-                } else {
-                    mes = mes + "<b>" + newKey + "</b>" + ":" + " " + value + "\n";
+                const newKey = key.replace("last_name", "Фамилия")
+                                  .replace("first_name", "Имя")
+                                  .replace("_id", "")
+                                  .replace("_score", "")
+                                  .replace("fullname", "Имя")
+                                  .replace("surname", "Фамилия")
+                                  .replace("name", "Имя")
+                                  .replace("address", "Адрес")
+                                  .replace("bday", "Дата Рождения")
+                                  .replace("patronymic", "Отчество")
+                                  .replace("gender", "Пол");
+
+                let newValue = value;
+                if (typeof value === 'string' && value.startsWith("https://")) {
+                    newValue = `<a href="${value}">Открыть</a>`;
+                } else if (typeof value === 'object') {
+                    newValue = JSON.stringify(value);
                 }
-                //mes = mes + "<b>" + newKey + "</b>" + ":" + " " + value + "\n";
+
+                mes += `<b>${newKey}</b>: ${newValue}\n`;
             }
         }
 
         return mes;
     } catch (error) {
         console.error(error);
-        return null;
+        return 'Произошла ошибка при поиске информации. Пожалуйста, попробуйте снова позже.';
     }
 }
 
