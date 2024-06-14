@@ -4,6 +4,7 @@ import path from 'path';
 import express from 'express';
 import bodyParser from 'body-parser';
 import leak from './leaks.js';
+import vkFind from './social.js';
 import user_api from './userbox.js';
 import { getComment, addComment } from './comments.js';
 
@@ -25,13 +26,30 @@ app.use(express.static('template'));
 
 
 app.get('/api', async (req, res) => {
-    const phone = req.query.p;
-    res.send(await leak(phone))
+    try {
+        const phone = req.query.p;
+        res.send(await leak(phone));
+    } catch {
+        res.send("Error");
+    }
+})
+
+app.get('/social', async (req, res) => {
+    try {
+        const social = req.query.s;
+        res.send(await vkFind(social));
+    } catch {
+        res.send("Error");
+    }
 })
 
 app.get('/user', async (req, res) => {
-    const phone = req.query.p;
-    res.send(await user_api(phone));
+    try {
+        const phone = req.query.p;
+        res.send(await user_api(phone));
+    } catch {
+        res.send("Error");
+    }
 })
 
 app.route('/')
