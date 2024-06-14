@@ -31,7 +31,14 @@ async function user_api(query) {
                                   .replace("address", "Адрес")
                                   .replace("bday", "Дата Рождения")
                                   .replace("patronymic", "Отчество")
-                                  .replace("gender", "Пол");
+                                  .replace("gender", "Пол")
+                                  .replace("city", "Город")
+                                  .replace("country", "Страна")
+                                  .replace("photo_max", "Фото")
+                                  .replace("photo_max_orig", "Фото")
+                                  .replace("mobile_phone", "Номер телефона")
+                                  .replace("status", "Статус")
+                                  .replace("domain", "Ник");
 
                 let newValue = value;
                 if (typeof value === 'string' && value.startsWith("https://")) {
