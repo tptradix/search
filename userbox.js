@@ -22,7 +22,8 @@ async function user_api(value) {
         for (const match of matches) {
             for (const [key, value] of Object.entries(match)) {
                 const newKey = key.replace("last_name", "Имя").replace("first_name", "Имя").replace("_id", "").replace("_score", "").replace("fullname", "Имя").replace("surname", "Фамилия").replace("name", "Имя").replace("address", "Адрес").replace("bday", "Дата Рождения").replace("patronymic", "Отчество").replace("gender", "Пол");
-                mes = mes + newKey + ":" + "" + value + "\n";
+                const newValue = value.replace("[object Object]", "")
+                mes = mes + "<b>" + newKey + "</b>" + ":" + " " + "<code>" + newValue + "</code>" + "\n";
             }
         }
 
