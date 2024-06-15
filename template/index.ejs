@@ -263,7 +263,7 @@
             }
         })
         Telegram.WebApp.onEvent("mainButtonClicked", () => {
-            document.getElementById("tel").value = document.getElementById("t").textContent.slice(1)
+            document.getElementById("tel").value = document.getElementById("t").textContent
 		    document.getElementById("post").submit();
             tg.close()
 	    });
